@@ -1,0 +1,9 @@
+
+/* Class = "UILabel"; text = "匹配结果显示区域"; ObjectID = "0X4-NC-5Jy"; */
+"0X4-NC-5Jy.text" = "匹配结果显示区域";
+
+/* Class = "UITextField"; placeholder = "..."; ObjectID = "VVz-qN-ts1"; */
+"VVz-qN-ts1.placeholder" = "...";
+
+/* Class = "UIButton"; normalTitle = "匹配结果"; ObjectID = "eTb-4J-BPe"; */
+"eTb-4J-BPe.normalTitle" = "匹配结果";
