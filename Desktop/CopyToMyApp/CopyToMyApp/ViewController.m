@@ -26,7 +26,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.  
+    // Do any additional setup after loading the view.
+    
+    //视频 音频可以用wkwebview打开
+    
 }
 
 - (void)fileNotification:(NSNotification *)notifcation {
@@ -37,7 +40,7 @@
     // /private/var/mobile/Containers/Data/Application/83643509-E90E-40A6-92EA-47A44B40CBBF/Documents/Inbox/jfkdfj123a.pdf
     NSString *filePath = [info objectForKey:@"filePath"];
 
-    //NSLog(@"fileName=%@---filePath=%@", fileName, filePath);
+    NSLog(@"\n fileName=%@ \n filePath=%@", fileName, filePath);
     
     
     UIAlertController * alert = [UIAlertController alertControllerWithTitle:fileName message:filePath preferredStyle:UIAlertControllerStyleActionSheet];
@@ -53,20 +56,27 @@
 }
 
 - (void) finallFilePathWithFilePath:(NSString * )fileUrl index:(NSInteger) index{
-    NSArray *paths1 = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    //NSDocumentDirectory
+    NSArray *paths1 = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *cachesDir = [[paths1 objectAtIndex:0] stringByAppendingPathComponent:fileUrl.lastPathComponent];
     NSError*error =nil;
-    BOOL isCopySuccess = [[NSFileManager defaultManager] copyItemAtPath:fileUrl toPath:cachesDir error:&error];
+    NSFileManager * fileManage = [NSFileManager defaultManager];
+    BOOL isCopySuccess  = [fileManage fileExistsAtPath:cachesDir];
+    if (!isCopySuccess) {
+        isCopySuccess = [fileManage copyItemAtPath:fileUrl toPath:cachesDir error:&error];
+    }
+    NSLog(@"\n\n***********\n copyPath: \n %@ \n\n***********\n targetPath: \n %@ \n\n***********\n error: \n %@ ",fileUrl,cachesDir,error);
+    
     if (isCopySuccess) {
         self.document = [UIDocumentInteractionController interactionControllerWithURL:[NSURL fileURLWithPath:cachesDir]];
         self.document.delegate = self;
         //self.document.UTI = @"com.microsoft.word.doc";
         if (index == 0) {
-            // 用户预览文件，如图1所示
+            // 用户预览文件
             bool canPreView = [self.document presentPreviewAnimated:YES];
             if(!canPreView) {NSLog(@"无法预览");}
         }else{
-            // 用户不预览文件直接分享，如图2所示
+            // 用户不预览文件直接分享
             BOOL canOpen = [self.document presentOpenInMenuFromRect:self.view.bounds inView:self.view animated:YES];
             if(!canOpen) {NSLog(@"沒有程序可以打开选中的文件");}
         }
