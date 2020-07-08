@@ -13,10 +13,41 @@
 		465C838624AF157600689747 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 465C838524AF157600689747 /* Assets.xcassets */; };
 		465C838924AF157600689747 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 465C838724AF157600689747 /* LaunchScreen.storyboard */; };
 		465C838C24AF157600689747 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 465C838B24AF157600689747 /* main.m */; };
+		4672B7A824B46FE200F6BCAF /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4672B7A724B46FE200F6BCAF /* ShareViewController.m */; };
+		4672B7AB24B46FE200F6BCAF /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4672B7A924B46FE200F6BCAF /* MainInterface.storyboard */; };
+		4672B7AF24B46FE200F6BCAF /* 懒虫.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4672B7A424B46FE200F6BCAF /* 懒虫.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		4672B7B724B4766B00F6BCAF /* CoustomShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4672B7B624B4766B00F6BCAF /* CoustomShareViewController.m */; };
+		4672B7BA24B4774C00F6BCAF /* CycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4672B7B824B4774C00F6BCAF /* CycleScrollView.m */; };
+		4672B7BD24B4790400F6BCAF /* AppDelegate+ShareExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4672B7BC24B4790400F6BCAF /* AppDelegate+ShareExtension.m */; };
+		4672B7C024B47EA300F6BCAF /* AppDelegate+CopyFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 4672B7BF24B47EA300F6BCAF /* AppDelegate+CopyFile.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		4672B7AD24B46FE200F6BCAF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 465C836E24AF157300689747 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4672B7A324B46FE200F6BCAF;
+			remoteInfo = ShareExtesion;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4672B7B324B46FE200F6BCAF /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				4672B7AF24B46FE200F6BCAF /* 懒虫.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		465C837624AF157300689747 /* CopyToMyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CopyToMyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		465C837624AF157300689747 /* 懒虫.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "懒虫.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		465C837924AF157300689747 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		465C837A24AF157300689747 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		465C837F24AF157300689747 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -26,10 +57,32 @@
 		465C838824AF157600689747 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		465C838A24AF157600689747 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		465C838B24AF157600689747 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4672B79924B45FED00F6BCAF /* CopyToMyApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CopyToMyApp.entitlements; sourceTree = "<group>"; };
+		4672B7A424B46FE200F6BCAF /* 懒虫.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "懒虫.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4672B7A624B46FE200F6BCAF /* ShareViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareViewController.h; sourceTree = "<group>"; };
+		4672B7A724B46FE200F6BCAF /* ShareViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
+		4672B7AA24B46FE200F6BCAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		4672B7AC24B46FE200F6BCAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4672B7B424B4712400F6BCAF /* ShareExtesion.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareExtesion.entitlements; sourceTree = "<group>"; };
+		4672B7B524B4766B00F6BCAF /* CoustomShareViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoustomShareViewController.h; sourceTree = "<group>"; };
+		4672B7B624B4766B00F6BCAF /* CoustomShareViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoustomShareViewController.m; sourceTree = "<group>"; };
+		4672B7B824B4774C00F6BCAF /* CycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CycleScrollView.m; sourceTree = "<group>"; };
+		4672B7B924B4774C00F6BCAF /* CycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleScrollView.h; sourceTree = "<group>"; };
+		4672B7BB24B4790300F6BCAF /* AppDelegate+ShareExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+ShareExtension.h"; sourceTree = "<group>"; };
+		4672B7BC24B4790400F6BCAF /* AppDelegate+ShareExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+ShareExtension.m"; sourceTree = "<group>"; };
+		4672B7BE24B47EA300F6BCAF /* AppDelegate+CopyFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+CopyFile.h"; sourceTree = "<group>"; };
+		4672B7BF24B47EA300F6BCAF /* AppDelegate+CopyFile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+CopyFile.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		465C837324AF157300689747 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4672B7A124B46FE200F6BCAF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -43,14 +96,17 @@
 			isa = PBXGroup;
 			children = (
 				465C837824AF157300689747 /* CopyToMyApp */,
+				4672B7A524B46FE200F6BCAF /* ShareExtesion */,
 				465C837724AF157300689747 /* Products */,
+				4672B79B24B46C9800F6BCAF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		465C837724AF157300689747 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				465C837624AF157300689747 /* CopyToMyApp.app */,
+				465C837624AF157300689747 /* 懒虫.app */,
+				4672B7A424B46FE200F6BCAF /* 懒虫.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -58,8 +114,13 @@
 		465C837824AF157300689747 /* CopyToMyApp */ = {
 			isa = PBXGroup;
 			children = (
+				4672B79924B45FED00F6BCAF /* CopyToMyApp.entitlements */,
 				465C837924AF157300689747 /* AppDelegate.h */,
 				465C837A24AF157300689747 /* AppDelegate.m */,
+				4672B7BE24B47EA300F6BCAF /* AppDelegate+CopyFile.h */,
+				4672B7BF24B47EA300F6BCAF /* AppDelegate+CopyFile.m */,
+				4672B7BB24B4790300F6BCAF /* AppDelegate+ShareExtension.h */,
+				4672B7BC24B4790400F6BCAF /* AppDelegate+ShareExtension.m */,
 				465C837F24AF157300689747 /* ViewController.h */,
 				465C838024AF157300689747 /* ViewController.m */,
 				465C838224AF157300689747 /* Main.storyboard */,
@@ -69,6 +130,29 @@
 				465C838B24AF157600689747 /* main.m */,
 			);
 			path = CopyToMyApp;
+			sourceTree = "<group>";
+		};
+		4672B79B24B46C9800F6BCAF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4672B7A524B46FE200F6BCAF /* ShareExtesion */ = {
+			isa = PBXGroup;
+			children = (
+				4672B7B424B4712400F6BCAF /* ShareExtesion.entitlements */,
+				4672B7A624B46FE200F6BCAF /* ShareViewController.h */,
+				4672B7A724B46FE200F6BCAF /* ShareViewController.m */,
+				4672B7B524B4766B00F6BCAF /* CoustomShareViewController.h */,
+				4672B7B624B4766B00F6BCAF /* CoustomShareViewController.m */,
+				4672B7B924B4774C00F6BCAF /* CycleScrollView.h */,
+				4672B7B824B4774C00F6BCAF /* CycleScrollView.m */,
+				4672B7A924B46FE200F6BCAF /* MainInterface.storyboard */,
+				4672B7AC24B46FE200F6BCAF /* Info.plist */,
+			);
+			path = ShareExtesion;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -81,15 +165,34 @@
 				465C837224AF157300689747 /* Sources */,
 				465C837324AF157300689747 /* Frameworks */,
 				465C837424AF157300689747 /* Resources */,
+				4672B7B324B46FE200F6BCAF /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4672B7AE24B46FE200F6BCAF /* PBXTargetDependency */,
+			);
+			name = CopyToMyApp;
+			productName = CopyToMyApp;
+			productReference = 465C837624AF157300689747 /* 懒虫.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4672B7A324B46FE200F6BCAF /* ShareExtesion */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4672B7B024B46FE200F6BCAF /* Build configuration list for PBXNativeTarget "ShareExtesion" */;
+			buildPhases = (
+				4672B7A024B46FE200F6BCAF /* Sources */,
+				4672B7A124B46FE200F6BCAF /* Frameworks */,
+				4672B7A224B46FE200F6BCAF /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = CopyToMyApp;
-			productName = CopyToMyApp;
-			productReference = 465C837624AF157300689747 /* CopyToMyApp.app */;
-			productType = "com.apple.product-type.application";
+			name = ShareExtesion;
+			productName = ShareExtesion;
+			productReference = 4672B7A424B46FE200F6BCAF /* 懒虫.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -101,6 +204,9 @@
 				ORGANIZATIONNAME = Mr.hu;
 				TargetAttributes = {
 					465C837524AF157300689747 = {
+						CreatedOnToolsVersion = 11.5;
+					};
+					4672B7A324B46FE200F6BCAF = {
 						CreatedOnToolsVersion = 11.5;
 					};
 				};
@@ -119,6 +225,7 @@
 			projectRoot = "";
 			targets = (
 				465C837524AF157300689747 /* CopyToMyApp */,
+				4672B7A324B46FE200F6BCAF /* ShareExtesion */,
 			);
 		};
 /* End PBXProject section */
@@ -134,6 +241,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4672B7A224B46FE200F6BCAF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4672B7AB24B46FE200F6BCAF /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -143,11 +258,31 @@
 			files = (
 				465C838124AF157300689747 /* ViewController.m in Sources */,
 				465C837B24AF157300689747 /* AppDelegate.m in Sources */,
+				4672B7C024B47EA300F6BCAF /* AppDelegate+CopyFile.m in Sources */,
+				4672B7BD24B4790400F6BCAF /* AppDelegate+ShareExtension.m in Sources */,
 				465C838C24AF157600689747 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4672B7A024B46FE200F6BCAF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4672B7BA24B4774C00F6BCAF /* CycleScrollView.m in Sources */,
+				4672B7A824B46FE200F6BCAF /* ShareViewController.m in Sources */,
+				4672B7B724B4766B00F6BCAF /* CoustomShareViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4672B7AE24B46FE200F6BCAF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4672B7A324B46FE200F6BCAF /* ShareExtesion */;
+			targetProxy = 4672B7AD24B46FE200F6BCAF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		465C838224AF157300689747 /* Main.storyboard */ = {
@@ -164,6 +299,14 @@
 				465C838824AF157600689747 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		4672B7A924B46FE200F6BCAF /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4672B7AA24B46FE200F6BCAF /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -283,6 +426,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CopyToMyApp/CopyToMyApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UF352PYY29;
 				GCC_VERSION = "";
@@ -293,7 +437,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.freedom.CopyToMyApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "懒虫";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -302,6 +446,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CopyToMyApp/CopyToMyApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UF352PYY29;
 				GCC_VERSION = "";
@@ -312,7 +457,47 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.freedom.CopyToMyApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "懒虫";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		4672B7B124B46FE200F6BCAF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ShareExtesion/ShareExtesion.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UF352PYY29;
+				INFOPLIST_FILE = ShareExtesion/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.freedom.CopyToMyApp.ShareExtesion;
+				PRODUCT_NAME = "懒虫";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4672B7B224B46FE200F6BCAF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ShareExtesion/ShareExtesion.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UF352PYY29;
+				INFOPLIST_FILE = ShareExtesion/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.freedom.CopyToMyApp.ShareExtesion;
+				PRODUCT_NAME = "懒虫";
+				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -334,6 +519,15 @@
 			buildConfigurations = (
 				465C839024AF157600689747 /* Debug */,
 				465C839124AF157600689747 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4672B7B024B46FE200F6BCAF /* Build configuration list for PBXNativeTarget "ShareExtesion" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4672B7B124B46FE200F6BCAF /* Debug */,
+				4672B7B224B46FE200F6BCAF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
