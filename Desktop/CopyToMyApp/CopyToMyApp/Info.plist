@@ -9,6 +9,10 @@
 		<dict>
 			<key>CFBundleTypeIconFiles</key>
 			<array/>
+            <!--            <优先显示>-->
+            <key>LSHandlerRank</key>
+            <string>Owner</string>
+            <!--            <优先显示>-->
 			<key>CFBundleTypeName</key>
 			<string>$(PRODUCT_NAME)</string>
 			<key>LSItemContentTypes</key>
