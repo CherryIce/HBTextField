@@ -10,6 +10,7 @@
 #import "CycleScrollView.h"
 
 #define SHAREUSERDEFAULTSKEY @"ShareUserDefaultsKey"
+#define UserInfoKey @"UserInfoKey"
 
 @interface CoustomShareViewController ()
 
@@ -23,6 +24,8 @@
 @property (weak,nonatomic) UIWebView *webView;
 @property (weak,nonatomic) CycleScrollView *cycleScrollView;
 
+@property (weak,nonatomic) UIView *mainView;
+
 @end
 
 @implementation CoustomShareViewController
@@ -30,13 +33,58 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    //获取用户信息
+    NSUserDefaults *shareDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.share.entitlements"];
+    NSDictionary * userDict = [shareDefaults objectForKey:UserInfoKey];
+    
+    // app名称
+    NSDictionary * infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    NSString * app_Name = [infoDictionary objectForKey:@"CFBundleDisplayName"];
+    if (!userDict) {
+        //自定义视图
+        UIAlertController * alert = [UIAlertController alertControllerWithTitle:app_Name message:[NSString stringWithFormat:@"抱歉，请登录%@之后才能继续使用%@此功能。",app_Name,app_Name] preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction * action = [UIAlertAction actionWithTitle:@"我知道了" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self cancelBtnClickHandler:nil];
+        }];
+        [alert addAction:action];
+        [self presentViewController:alert animated:YES completion:nil];
+        return;
+    }
+    
+    NSString *errorMessage = nil;
+    for (NSExtensionItem * obj in self.extensionContext.inputItems) {
+        for (NSItemProvider * itemProvider in obj.attachments) {
+            errorMessage = [self getErrorMessageWithType:itemProvider.registeredTypeIdentifiers.lastObject];
+            if (errorMessage) {
+                break;
+            }
+        }
+    }
+    
+    if (errorMessage) {
+        //自定义视图
+           UIAlertController * alert = [UIAlertController alertControllerWithTitle:app_Name message:errorMessage preferredStyle:UIAlertControllerStyleAlert];
+           UIAlertAction * action = [UIAlertAction actionWithTitle:@"我知道了" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+               [self cancelBtnClickHandler:nil];
+           }];
+           [alert addAction:action];
+           [self presentViewController:alert animated:YES completion:nil];
+           return;
+    }
+    
     [self initWebView];
     self.shareArray = [NSMutableArray array];
     
-    UIView *container = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight([UIScreen mainScreen].bounds), CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds))];
+    UIView * mainView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    mainView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.25];
+    [self.view addSubview:self.mainView = mainView];
+    
+    UIView *container = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth([UIScreen mainScreen].bounds) - 30 * 2, 300)];
     container.backgroundColor = [UIColor whiteColor];
-    container.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
-    [self.view addSubview:self.containerView = container];
+    container.layer.cornerRadius = 20;
+    container.center = self.view.center;
+    container.clipsToBounds = YES;
+    [self.mainView addSubview:self.containerView = container];
 
     
     UIView *navView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(container.frame), 64)];
@@ -44,7 +92,7 @@
     [container addSubview:self.navView = navView];
     
     UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(navView.frame) - 1, CGRectGetWidth(navView.frame), 1)];
-    lineView.backgroundColor = [UIColor colorWithRed:174 / 255.0 green:174 / 255.0 blue:174 / 255.0 alpha:1.0];
+    lineView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     [navView addSubview:lineView];
     
     UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -98,6 +146,7 @@
                     [itemProvider loadItemForTypeIdentifier:itemProvider.registeredTypeIdentifiers.lastObject options:nil completionHandler:^(id<NSSecureCoding>  _Nullable item, NSError * _Null_unspecified error) {
 //                        NSData *data = [NSData dataWithContentsOfURL:(NSURL *)item];
 //                        UIImage *image = [UIImage imageWithData:data];
+                        /**根据实际情况来*/
                         if ([(NSURL *)item respondsToSelector:@selector(absoluteString)]) {
                             [weakself.shareArray addObject:[(NSURL *)item absoluteString]];
                             [weakself creatUIWithMessage:nil];
@@ -106,7 +155,6 @@
                 }
                 
             }else if ([itemProvider hasItemConformingToTypeIdentifier:@"com.apple.quicktime-movie"] || [itemProvider hasItemConformingToTypeIdentifier:@"public.mpeg-4"]) {//分享视频
-                
                 NSString *errorMessage = [weakself getErrorMessageWithType:itemProvider.registeredTypeIdentifiers.lastObject];
                 if (errorMessage != nil) {//结束，展示错误信息
                     [weakself creatUIWithMessage:errorMessage];
@@ -114,13 +162,11 @@
                 }else {//可以分享
                     [itemProvider loadItemForTypeIdentifier:itemProvider.registeredTypeIdentifiers.lastObject options:nil completionHandler:^(id<NSSecureCoding>  _Nullable item, NSError * _Null_unspecified error) {
 //                        NSData *data = [NSData dataWithContentsOfURL:(NSURL *)item];
+                        /**根据实际情况来*/
                         if ([(NSURL *)item respondsToSelector:@selector(absoluteString)]) {
                             [weakself.shareArray addObject:[(NSURL *)item absoluteString]];
                             [weakself creatUIWithMessage:nil];
                         }
-                        
-                        
-                        
                     }];
                 }
             }else {
@@ -133,16 +179,8 @@
         *stop = YES;
     }];
     
-    
     NSLog(@"结束");
 }
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    [UIView animateWithDuration:0.25 animations:^{
-        self.containerView.frame = [UIScreen mainScreen].bounds;
-    }];
-}
-
 
 - (NSString *)getErrorMessageWithType:(NSString *)type {//判断当前类型是否可以进行分享
     NSString *typeN = [self getTypeNameWithType:type];
@@ -152,7 +190,9 @@
     if (self.currentType != nil) {
         if (![type isEqualToString:self.currentType]) {
             NSString *typeName = [self getTypeNameWithType:self.currentType];
-            return [NSString stringWithFormat:@"%@和%@不能同时分享",typeName,typeN];
+            if (![typeN isEqualToString:typeName]) {
+               return [NSString stringWithFormat:@"%@和%@不能同时分享",typeName,typeN];
+            }
         }
     }else {
         self.currentType = type;
@@ -186,7 +226,7 @@
 - (NSString *)getTypeNameWithType:(NSString *)type {
     if ([type isEqualToString:@"public.url"]) {//分享网址
         return @"网址";
-    }else if ([type isEqualToString:@"public.jpeg"] || [type isEqualToString:@"public.png"] || [type isEqualToString:@"com.compuserve.gif"]) {//分享图片([itemProvider hasItemConformingToTypeIdentifier:@"public.jpeg"] || [itemProvider hasItemConformingToTypeIdentifier:@"public.png"] || [itemProvider hasItemConformingToTypeIdentifier:@"com.compuserve.gif"])
+    }else if ([type isEqualToString:@"public.jpeg"] || [type isEqualToString:@"public.png"] || [type isEqualToString:@"com.compuserve.gif"] || [type isEqualToString:@"public.heic"]) {//分享图片([itemProvider hasItemConformingToTypeIdentifier:@"public.jpeg"] || [itemProvider hasItemConformingToTypeIdentifier:@"public.png"] || [itemProvider hasItemConformingToTypeIdentifier:@"com.compuserve.gif"])
         return @"图片";
     }else if ([type isEqualToString:@"com.apple.quicktime-movie"]||[type isEqualToString:@"public.mpeg-4"]) {//分享视频
         return @"视频";
@@ -200,10 +240,11 @@
         if (message == nil) {
             if ([self.currentType isEqualToString:@"public.url"]) {//分享网址
                 [self showMessage:[NSString stringWithFormat:@"分享的一个网址：%@",self.shareArray.lastObject]];
-            }else if (([self.currentType isEqualToString:@"public.jpeg"] || [self.currentType isEqualToString:@"public.png"] || [self.currentType isEqualToString:@"com.compuserve.gif"])) {//分享图片
+            }else if (([self.currentType isEqualToString:@"public.jpeg"] || [self.currentType isEqualToString:@"public.png"] || [self.currentType isEqualToString:@"com.compuserve.gif"] || [self.currentType isEqualToString:@"public.heic"])) {//分享图片
                 @synchronized(self) {
                     if (self.cycleScrollView == nil) {
-                        CycleScrollView *scrollView = [[CycleScrollView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.navView.frame) + 4, CGRectGetWidth(self.containerView.frame), CGRectGetWidth(self.containerView.frame) / 2) cycleDirection:CycleDirectionLandscape pictures:self.shareArray delegate:nil];
+                        CycleScrollView *scrollView = [[CycleScrollView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.navView.frame) + 20, CGRectGetWidth(self.containerView.frame), CGRectGetHeight
+                                                                                                        (self.containerView.frame) - CGRectGetMaxY(self.navView.frame) - 40) cycleDirection:CycleDirectionLandscape pictures:self.shareArray delegate:nil];
                         [self.containerView addSubview:self.cycleScrollView = scrollView];
                     }else {
                         [self.cycleScrollView resetScrollViewImages:self.shareArray];

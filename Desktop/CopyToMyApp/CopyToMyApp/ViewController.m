@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 
+#define UserInfoKey @"UserInfoKey"
+
 @interface ViewController ()<UIDocumentInteractionControllerDelegate>
 
 @property (nonatomic,strong)UIDocumentInteractionController * document;
@@ -30,6 +32,13 @@
     
     //视频 音频可以用wkwebview打开
     
+    NSUserDefaults *shareDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.share.entitlements"];
+    NSDictionary * userDict = [shareDefaults objectForKey:UserInfoKey];
+    if (userDict) {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"登出" style:UIBarButtonItemStyleDone target:self action:@selector(loginOutApp)];
+    }else{
+       self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"登录" style:UIBarButtonItemStyleDone target:self action:@selector(loginInApp)];
+    }
 }
 
 - (void)fileNotification:(NSNotification *)notifcation {
@@ -122,6 +131,21 @@
 
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+
+#pragma mark 登录、登出
+- (void) loginInApp {
+    NSUserDefaults *shareDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.share.entitlements"];
+    NSDictionary *shareDic = @{@"userId" : @"lc001",@"token" : @"now"};
+    [shareDefaults setObject:shareDic forKey:UserInfoKey];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"登出" style:UIBarButtonItemStyleDone target:self action:@selector(loginOutApp)];
+}
+
+- (void) loginOutApp {
+    NSUserDefaults *shareDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.share.entitlements"];
+    [shareDefaults removeObjectForKey:UserInfoKey];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"登录" style:UIBarButtonItemStyleDone target:self action:@selector(loginInApp)];
 }
 
 
