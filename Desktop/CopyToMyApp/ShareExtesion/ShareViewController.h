@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <Social/Social.h>
+#import <Social/Social.h>/**苹果自带分享**/
 
 @interface ShareViewController : SLComposeServiceViewController
 

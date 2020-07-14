@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		462CD5D024BD3EA20082713D /* ShareTipsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 462CD5CF24BD3EA20082713D /* ShareTipsView.m */; };
+		462CD5D224BD3EB00082713D /* ShareTipsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 462CD5D124BD3EB00082713D /* ShareTipsView.xib */; };
+		462CD5DB24BD4B4B0082713D /* ShareDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 462CD5DA24BD4B4B0082713D /* ShareDisplayViewController.m */; };
+		462CD5DE24BD90260082713D /* ShareDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 462CD5DD24BD90260082713D /* ShareDisplayView.m */; };
 		465C837B24AF157300689747 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 465C837A24AF157300689747 /* AppDelegate.m */; };
 		465C838124AF157300689747 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 465C838024AF157300689747 /* ViewController.m */; };
 		465C838424AF157300689747 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 465C838224AF157300689747 /* Main.storyboard */; };
@@ -47,6 +51,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		462CD5CE24BD3EA20082713D /* ShareTipsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareTipsView.h; sourceTree = "<group>"; };
+		462CD5CF24BD3EA20082713D /* ShareTipsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareTipsView.m; sourceTree = "<group>"; };
+		462CD5D124BD3EB00082713D /* ShareTipsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShareTipsView.xib; sourceTree = "<group>"; };
+		462CD5D924BD4B4B0082713D /* ShareDisplayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareDisplayViewController.h; sourceTree = "<group>"; };
+		462CD5DA24BD4B4B0082713D /* ShareDisplayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareDisplayViewController.m; sourceTree = "<group>"; };
+		462CD5DC24BD90260082713D /* ShareDisplayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareDisplayView.h; sourceTree = "<group>"; };
+		462CD5DD24BD90260082713D /* ShareDisplayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareDisplayView.m; sourceTree = "<group>"; };
 		465C837624AF157300689747 /* 懒虫.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "懒虫.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		465C837924AF157300689747 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		465C837A24AF157300689747 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -92,6 +103,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		462CD5D824BD4AE40082713D /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				4672B7B924B4774C00F6BCAF /* CycleScrollView.h */,
+				4672B7B824B4774C00F6BCAF /* CycleScrollView.m */,
+				462CD5CE24BD3EA20082713D /* ShareTipsView.h */,
+				462CD5CF24BD3EA20082713D /* ShareTipsView.m */,
+				462CD5D124BD3EB00082713D /* ShareTipsView.xib */,
+				462CD5DC24BD90260082713D /* ShareDisplayView.h */,
+				462CD5DD24BD90260082713D /* ShareDisplayView.m */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
 		465C836D24AF157300689747 = {
 			isa = PBXGroup;
 			children = (
@@ -142,13 +167,14 @@
 		4672B7A524B46FE200F6BCAF /* ShareExtesion */ = {
 			isa = PBXGroup;
 			children = (
+				462CD5D824BD4AE40082713D /* UIView */,
 				4672B7B424B4712400F6BCAF /* ShareExtesion.entitlements */,
 				4672B7A624B46FE200F6BCAF /* ShareViewController.h */,
 				4672B7A724B46FE200F6BCAF /* ShareViewController.m */,
 				4672B7B524B4766B00F6BCAF /* CoustomShareViewController.h */,
 				4672B7B624B4766B00F6BCAF /* CoustomShareViewController.m */,
-				4672B7B924B4774C00F6BCAF /* CycleScrollView.h */,
-				4672B7B824B4774C00F6BCAF /* CycleScrollView.m */,
+				462CD5D924BD4B4B0082713D /* ShareDisplayViewController.h */,
+				462CD5DA24BD4B4B0082713D /* ShareDisplayViewController.m */,
 				4672B7A924B46FE200F6BCAF /* MainInterface.storyboard */,
 				4672B7AC24B46FE200F6BCAF /* Info.plist */,
 			);
@@ -245,6 +271,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				462CD5D224BD3EB00082713D /* ShareTipsView.xib in Resources */,
 				4672B7AB24B46FE200F6BCAF /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -268,9 +295,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				462CD5D024BD3EA20082713D /* ShareTipsView.m in Sources */,
+				462CD5DE24BD90260082713D /* ShareDisplayView.m in Sources */,
 				4672B7BA24B4774C00F6BCAF /* CycleScrollView.m in Sources */,
 				4672B7A824B46FE200F6BCAF /* ShareViewController.m in Sources */,
 				4672B7B724B4766B00F6BCAF /* CoustomShareViewController.m in Sources */,
+				462CD5DB24BD4B4B0082713D /* ShareDisplayViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,6 +455,7 @@
 		465C839024AF157600689747 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = CopyToMyApp/CopyToMyApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -445,6 +476,7 @@
 		465C839124AF157600689747 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = CopyToMyApp/CopyToMyApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
