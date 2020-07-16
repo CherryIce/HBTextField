@@ -15,7 +15,7 @@
 
 @interface CoustomShareViewController ()<ShareDisplayViewDelegate>
 
-//只允许分享同类型，目前可分享图片、视频、链接
+//只允许分享同类型，目前可分享图片、视频、链接、文件
 @property (nonatomic, copy) NSString *currentType;
 @property (strong,nonatomic) NSMutableArray *shareArray;
 @property (nonatomic, copy) NSString * typeStr;
@@ -50,8 +50,10 @@ static NSString *kQueueOperationsChanged = @"kQueueOperationsChanged";
         return;
     }
     
+    NSLog(@"%@",self.extensionContext.inputItems);
+    
     NSString *errorMessage = nil;
-    _typeStr = nil;//图片 视频 网址
+    _typeStr = nil;//图片 视频 网址 文件
     for (NSExtensionItem * obj in self.extensionContext.inputItems) {
         for (NSItemProvider * itemProvider in obj.attachments) {
             errorMessage = [self getErrorMessageWithType:itemProvider.registeredTypeIdentifiers.lastObject];
@@ -77,7 +79,7 @@ static NSString *kQueueOperationsChanged = @"kQueueOperationsChanged";
     }
     
     self.shareArray = [NSMutableArray array];
-    NSLog(@"%@",self.extensionContext.inputItems);
+    
    //获取分享链接
     __weak typeof(self) weakself= self;
     [self.extensionContext.inputItems enumerateObjectsUsingBlock:^(NSExtensionItem *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -107,7 +109,7 @@ static NSString *kQueueOperationsChanged = @"kQueueOperationsChanged";
                   }
                 }];
             }
-             else if ([itemProvider hasItemConformingToTypeIdentifier:@"com.apple.quicktime-movie"]
+            else if ([itemProvider hasItemConformingToTypeIdentifier:@"com.apple.quicktime-movie"]
                                       || [itemProvider hasItemConformingToTypeIdentifier:@"public.mpeg-4"]) {//分享视频
                  [itemProvider loadItemForTypeIdentifier:itemProvider.registeredTypeIdentifiers.lastObject
                                                                                  options:nil
@@ -121,10 +123,25 @@ static NSString *kQueueOperationsChanged = @"kQueueOperationsChanged";
                           [weakself showDisplay];
                       }
                  }];
-            }else {
-                NSLog(@"目前只支持分享图片、视频、链接");
+            }
+            else if ([itemProvider hasItemConformingToTypeIdentifier:@"public.file-url"]) {//分享文件
+                 [itemProvider loadItemForTypeIdentifier:itemProvider.registeredTypeIdentifiers.lastObject
+                                                                                 options:nil
+                                                                       completionHandler:^(id<NSSecureCoding>  _Nullable item, NSError * _Null_unspecified error) {
+                      /*
+                       NSData *data = [NSData dataWithContentsOfURL:(NSURL *)item];
+                       */
+                      /**根据实际情况来*/
+                      if ([(NSURL *)item respondsToSelector:@selector(absoluteString)]) {
+                          [weakself.shareArray addObject:[(NSURL *)item absoluteString]];
+                          [weakself showDisplay];
+                      }
+                 }];
+            }
+            else {
+                NSLog(@"目前只支持分享图片、视频、链接、文件");
                 *stop = YES;
-             }
+            }
                                 
          }];
         *stop = YES;
@@ -148,7 +165,7 @@ static NSString *kQueueOperationsChanged = @"kQueueOperationsChanged";
 - (NSString *)getErrorMessageWithType:(NSString *)type {//判断当前类型是否可以进行分享
     NSString *typeN = [self getTypeNameWithType:type];
     if (typeN == nil) {
-        return @"目前只支持分享图片、视频、链接";
+        return @"目前只支持分享图片、视频、链接、文件";
     }
     if (self.currentType != nil) {
         if (![type isEqualToString:self.currentType]) {
@@ -170,7 +187,10 @@ static NSString *kQueueOperationsChanged = @"kQueueOperationsChanged";
         return @"图片";
     }else if ([type isEqualToString:@"com.apple.quicktime-movie"]||[type isEqualToString:@"public.mpeg-4"]) {//分享视频
         return @"视频";
-    }else {
+    }else if ([type isEqualToString:@"public.file-url"]) {//分享文件
+        return @"文件";
+    }
+    else {
         return nil;
     }
 }

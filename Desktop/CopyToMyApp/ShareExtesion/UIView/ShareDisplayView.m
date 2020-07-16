@@ -134,12 +134,13 @@ static NSString * cellId = @"Cell";
     lineView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     [self.headerView addSubview:lineView];
     
+    CGRect showRect = CGRectMake(0,CGRectGetMaxY(lineView.frame) + 10, CGRectGetWidth(self.headerView.frame), CGRectGetHeight(self.headerView.frame) - 10 - CGRectGetMaxY(lineView.frame));
     if ([self.currentTypeStr isEqualToString:@"图片"]) {
-        CycleScrollView *scrollView = [[CycleScrollView alloc] initWithFrame:CGRectMake(0,CGRectGetMaxY(lineView.frame) + 10, CGRectGetWidth(self.headerView.frame), CGRectGetHeight(self.headerView.frame) - 10 - CGRectGetMaxY(lineView.frame)) cycleDirection:CycleDirectionLandscape pictures:self.shareArray delegate:nil];
+        CycleScrollView *scrollView = [[CycleScrollView alloc] initWithFrame:showRect cycleDirection:CycleDirectionLandscape pictures:self.shareArray delegate:nil];
         [self.headerView addSubview:self.cycleScrollView = scrollView];
     }
     if ([self.currentTypeStr isEqualToString:@"视频"]) {
-        UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,CGRectGetMaxY(lineView.frame) + 10, CGRectGetWidth(self.headerView.frame), CGRectGetHeight(self.headerView.frame) - 10 - CGRectGetMaxY(lineView.frame))];
+        UIImageView * imageView = [[UIImageView alloc] initWithFrame:showRect];
         [self.headerView addSubview:imageView];
         
         NSURL * url = [NSURL URLWithString:self.shareArray.firstObject];
@@ -149,12 +150,20 @@ static NSString * cellId = @"Cell";
     
     if ([self.currentTypeStr isEqualToString:@"网址"]) {
         WKWebViewConfiguration *webConfiguration = [WKWebViewConfiguration new];
-        WKWebView * webView = [[WKWebView alloc] initWithFrame:CGRectMake(0,CGRectGetMaxY(lineView.frame) + 10, CGRectGetWidth(self.headerView.frame), CGRectGetHeight(self.headerView.frame) - 10 - CGRectGetMaxY(lineView.frame)) configuration:webConfiguration];
+        WKWebView * webView = [[WKWebView alloc] initWithFrame:showRect configuration:webConfiguration];
         webView.navigationDelegate = self;
         NSString *urlStr = self.shareArray.lastObject;
         NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlStr]];
         [webView loadRequest:request];
         [self.headerView addSubview:self.webView = webView];
+    }
+    
+    if ([self.currentTypeStr isEqualToString:@"文件"]) {
+        UILabel * label = [[UILabel alloc] initWithFrame:showRect];
+        label.textAlignment = NSTextAlignmentCenter;
+        label.numberOfLines = 0;
+        label.text = [NSString stringWithFormat:@"分享文件：%@",self.shareArray.lastObject];
+        [self.headerView addSubview:label];
     }
     
     self.tableView.tableHeaderView = self.headerView;
