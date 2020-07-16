@@ -150,7 +150,7 @@ static NSString *kQueueOperationsChanged = @"kQueueOperationsChanged";
 
 - (void) showDisplay {
     NSExtensionItem * items = self.extensionContext.inputItems.firstObject;
-    NSLog(@"!!!!!!!!!!%zd ------ %zd",self.shareArray.count,items.attachments.count);
+//    NSLog(@"!!!!!!!!!!%zd ------ %zd",self.shareArray.count,items.attachments.count);
     if (self.shareArray.count == items.attachments.count) {
         dispatch_async(dispatch_get_main_queue(), ^{
             ShareDisplayView * dsp = [ShareDisplayView shareInstance];

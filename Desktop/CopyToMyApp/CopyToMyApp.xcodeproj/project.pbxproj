@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		460A4DDB24C0442100D0B9C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 465C838524AF157600689747 /* Assets.xcassets */; };
 		462CD5D024BD3EA20082713D /* ShareTipsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 462CD5CF24BD3EA20082713D /* ShareTipsView.m */; };
 		462CD5D224BD3EB00082713D /* ShareTipsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 462CD5D124BD3EB00082713D /* ShareTipsView.xib */; };
 		462CD5DB24BD4B4B0082713D /* ShareDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 462CD5DA24BD4B4B0082713D /* ShareDisplayViewController.m */; };
@@ -272,6 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				462CD5D224BD3EB00082713D /* ShareTipsView.xib in Resources */,
+				460A4DDB24C0442100D0B9C6 /* Assets.xcassets in Resources */,
 				4672B7AB24B46FE200F6BCAF /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -455,11 +457,13 @@
 		465C839024AF157600689747 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = CopyToMyApp/CopyToMyApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UF352PYY29;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT_CODE = YES;
 				GCC_VERSION = "";
 				INFOPLIST_FILE = CopyToMyApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -476,11 +480,13 @@
 		465C839124AF157600689747 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = CopyToMyApp/CopyToMyApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UF352PYY29;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT_CODE = YES;
 				GCC_VERSION = "";
 				INFOPLIST_FILE = CopyToMyApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -497,9 +503,11 @@
 		4672B7B124B46FE200F6BCAF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_ENTITLEMENTS = ShareExtesion/ShareExtesion.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UF352PYY29;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT_CODE = NO;
 				INFOPLIST_FILE = ShareExtesion/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -517,9 +525,11 @@
 		4672B7B224B46FE200F6BCAF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_ENTITLEMENTS = ShareExtesion/ShareExtesion.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UF352PYY29;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT_CODE = NO;
 				INFOPLIST_FILE = ShareExtesion/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (

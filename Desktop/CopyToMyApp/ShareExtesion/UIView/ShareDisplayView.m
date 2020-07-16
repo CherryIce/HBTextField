@@ -16,6 +16,8 @@
 
 #import <WebKit/WebKit.h>
 
+#define UserInfoKey @"UserInfoKey"
+
 @interface ShareDisplayView()<UITableViewDelegate,UITableViewDataSource,WKNavigationDelegate>
 
 @property (nonatomic , strong) UITableView * tableView;
@@ -191,6 +193,10 @@ static NSString * cellId = @"Cell";
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
     }
+    //获取用户信息
+    NSUserDefaults *shareDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.share.entitlements"];
+    NSDictionary * userDict = [shareDefaults objectForKey:UserInfoKey];
+    cell.imageView.image = [UIImage imageNamed:userDict[@"friend_img"]];
     cell.textLabel.text = @"发送给朋友";
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;

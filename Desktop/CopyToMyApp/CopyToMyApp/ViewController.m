@@ -137,7 +137,7 @@
 #pragma mark 登录、登出
 - (void) loginInApp {
     NSUserDefaults *shareDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.share.entitlements"];
-    NSDictionary *shareDic = @{@"userId" : @"lc001",@"token" : @"now"};
+    NSDictionary *shareDic = @{@"userId" : @"lc001",@"token" : @"now",@"friend_img": @"friend",@"circle_img":@"circle"};
     [shareDefaults setObject:shareDic forKey:UserInfoKey];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"登出" style:UIBarButtonItemStyleDone target:self action:@selector(loginOutApp)];
 }

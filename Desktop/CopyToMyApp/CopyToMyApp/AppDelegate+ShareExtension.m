@@ -28,6 +28,12 @@
                 NSString *detail = [shareDic objectForKey:@"detail"];
                 
                 NSLog(@">>>>>shareType:%@ \n shareData:%@ \n detail:%@",shareType,shareData,detail);
+                UIAlertController * alert = [UIAlertController alertControllerWithTitle:shareType message:shareData.lastObject preferredStyle:UIAlertControllerStyleActionSheet];
+                UIAlertAction * action = [UIAlertAction actionWithTitle:@"我知道了" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    
+                }];
+                [alert addAction:action];
+                [app.keyWindow.rootViewController presentViewController:alert animated:YES completion:nil];
             }
         }
     }

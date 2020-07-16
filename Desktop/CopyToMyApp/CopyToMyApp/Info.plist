@@ -9,10 +9,10 @@
 		<dict>
 			<key>CFBundleTypeIconFiles</key>
 			<array/>
-			<key>LSHandlerRank</key>
-			<string>Owner</string>
 			<key>CFBundleTypeName</key>
 			<string>$(PRODUCT_NAME)</string>
+			<key>LSHandlerRank</key>
+			<string>Alternate</string>
 			<key>LSItemContentTypes</key>
 			<array>
 				<string>com.microsoft.powerpoint.ppt</string>
@@ -62,13 +62,9 @@
 	<string></string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-<!--    LSSupportsOpeningDocumentsInPlace true  是在"APP"中打开-->
-<!--    LSSupportsOpeningDocumentsInPlace false 是拷贝到"APP"-->
 	<key>LSSupportsOpeningDocumentsInPlace</key>
 	<false/>
 	<key>UIFileSharingEnabled</key>
-	<false/>
-	<key>UISupportsDocumentBrowser</key>
 	<false/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
@@ -91,5 +87,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UISupportsDocumentBrowser</key>
+	<false/>
 </dict>
 </plist>
