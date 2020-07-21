@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iGl-hN-ykf">
+                                <rect key="frame" x="167" y="109.5" width="80" height="80"/>
+                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="iOD-uJ-alC"/>
+                                    <constraint firstAttribute="height" constant="80" id="olL-yy-CRR"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="http://www.baidu.com" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xk3-Ko-vwN">
+                                <rect key="frame" x="50" y="64" width="314" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6fo-vc-tjM">
+                                <rect key="frame" x="50" y="279.5" width="314" height="44"/>
+                                <color key="backgroundColor" red="0.98823529409999999" green="0.59607843140000005" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="UHi-NQ-NGN"/>
+                                </constraints>
+                                <state key="normal" title="获取ico">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g7e-Sp-rDK"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="http://www.baidu.com" borderStyle="roundedRect" placeholder="输一个你想拿ico的网址" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w3D-bg-bz2">
+                                <rect key="frame" x="50" y="214.5" width="314" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="4hM-Bs-4MS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bdl-8O-pSp">
+                                <rect key="frame" x="50" y="343.5" width="314" height="532.5"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="bdl-8O-pSp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="1j6-9q-I1a"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6fo-vc-tjM" secondAttribute="trailing" constant="50" id="3vD-kt-UGk"/>
+                            <constraint firstItem="6fo-vc-tjM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="4zV-f0-O2O"/>
+                            <constraint firstItem="iGl-hN-ykf" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Gmr-jN-v5n"/>
+                            <constraint firstAttribute="bottom" secondItem="bdl-8O-pSp" secondAttribute="bottom" constant="20" id="Kpi-FU-M7r"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="w3D-bg-bz2" secondAttribute="trailing" constant="50" id="VeM-UJ-9sb"/>
+                            <constraint firstItem="iGl-hN-ykf" firstAttribute="top" secondItem="xk3-Ko-vwN" secondAttribute="bottom" constant="25" id="WEP-7R-hNM"/>
+                            <constraint firstItem="xk3-Ko-vwN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="WtM-bL-7fE"/>
+                            <constraint firstItem="w3D-bg-bz2" firstAttribute="top" secondItem="iGl-hN-ykf" secondAttribute="bottom" constant="25" id="bAT-VY-LQj"/>
+                            <constraint firstItem="w3D-bg-bz2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="k20-sZ-Je0"/>
+                            <constraint firstItem="bdl-8O-pSp" firstAttribute="top" secondItem="6fo-vc-tjM" secondAttribute="bottom" constant="20" id="rR9-aD-VOm"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bdl-8O-pSp" secondAttribute="trailing" constant="50" id="v95-Mz-d0H"/>
+                            <constraint firstItem="6fo-vc-tjM" firstAttribute="top" secondItem="w3D-bg-bz2" secondAttribute="bottom" constant="25" id="ywj-6Y-pPg"/>
+                            <constraint firstItem="xk3-Ko-vwN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="zLh-YG-dW2"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xk3-Ko-vwN" secondAttribute="trailing" constant="50" id="zw6-u6-0nP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="inputLinkTf" destination="w3D-bg-bz2" id="rLL-md-yrJ"/>
+                        <outlet property="showIcon" destination="iGl-hN-ykf" id="OS3-Ax-ogv"/>
+                        <outlet property="showLabel" destination="xk3-Ko-vwN" id="2y5-QP-5Tm"/>
+                        <outlet property="webView" destination="bdl-8O-pSp" id="YRB-ub-fyy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-117.39130434782609" y="138.61607142857142"/>
+        </scene>
+    </scenes>
+</document>
