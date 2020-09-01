@@ -9,7 +9,6 @@
 #import "UIImage+LuBan.h"
 
 #import <objc/runtime.h>
-#import <MobileCoreServices/MobileCoreServices.h>
 
 @implementation UIImage (LuBan)
 
@@ -20,24 +19,20 @@ static char customImageName;
     return [self lubanCompressImage:image withMask:@""];
 }
 
-+ (NSData *)lubanCompressImage:( UIImage *)image imageType:( CFStringRef)imageType {
-    return [self lubanCompressImage:image withMask:@"" imageType:imageType];
-}
-
-
 + (NSData *)lubanCompressImage:(UIImage *)image withMask:(NSString *)maskName {
-    return [self lubanCompressImage:image withMask:maskName imageType:kUTTypeJPEG];
-}
-
-+ (NSData *)lubanCompressImage:(UIImage *)image withMask:(NSString *)maskName imageType:(nonnull CFStringRef)imageType {
     
     double size;
+    //开始执行时间
+    CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
     //测试图大小是44M
 //    //UIImageJPEGRepresentation方法的峰值大概是30M-100+M 消耗时间都差不多
 //    NSData *imageData = UIImageJPEGRepresentation(image, 0.7);
 //    NSLog(@">>>>>> %f Kb",imageData1.length/1024.0);
     //ImageIO方法的峰值大概是17M-80+M
-    NSData *imageData = [self rawData2:image imageType:imageType];
+    NSData *imageData = [self rawData2:image];
+    //计算耗时
+    CFAbsoluteTime linkTime = (CFAbsoluteTimeGetCurrent() - startTime);
+    NSLog(@"Linked in %f ms", linkTime *1000.0);
     NSLog(@"image data size before compressed == %f Kb",imageData.length/1024.0);
     
     int fixelW = (int)image.size.width;
@@ -110,14 +105,6 @@ static char customImageName;
         objc_setAssociatedObject(self, &customImageName, imageName, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
     return [self lubanCompressImage:image withMask:@""];
-}
-
-+ (NSData *)lubanCompressImage:(UIImage *)image withCustomImage:(NSString *)imageName imageType:(nonnull CFStringRef)imageType{
-    if (imageName) {
-        objc_setAssociatedObject(self, &isCustomImage, @(1), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-        objc_setAssociatedObject(self, &customImageName, imageName, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    }
-    return [self lubanCompressImage:image withMask:@"" imageType:imageType];
 }
 
 + (NSData *)compressWithImage:(UIImage *)image thumbW:(int)width thumbH:(int)height size:(double)size withMask:(NSString *)maskName {
@@ -331,15 +318,12 @@ static char customImageName;
 /**
  使用imageIO中的api生成data
  */
-+ (NSData *)rawData2:(UIImage *)image imageType:(CFStringRef)imageType{
-    if (!imageType) {
-        imageType = kUTTypeJPEG;
-    }
++ (NSData *)rawData2:(UIImage *)image {
     NSDictionary *options = @{(__bridge NSString *)kCGImageSourceShouldCache : @NO,//不需要解码仅需要创建 CGImageSource
                               (__bridge NSString *)kCGImageSourceShouldCacheImmediately : @NO
                               };
     NSMutableData *data = [NSMutableData data];
-    CGImageDestinationRef destRef = CGImageDestinationCreateWithData((__bridge CFMutableDataRef)data, imageType, 0.7/*1*/, (__bridge CFDictionaryRef)options);
+    CGImageDestinationRef destRef = CGImageDestinationCreateWithData((__bridge CFMutableDataRef)data, kUTTypeJPEG, 0.7/*1*/, (__bridge CFDictionaryRef)options);
     CGImageDestinationAddImage(destRef, image.CGImage, (__bridge CFDictionaryRef)options);
     CGImageDestinationFinalize(destRef);
     CFRelease(destRef);

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MobileCoreServices/MobileCoreServices.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -40,16 +41,10 @@ size = (newW * newH) / (width * height) * m；
 
 //单纯的压缩图
 + (NSData *)lubanCompressImage:(UIImage *)image;
-//指定压缩的类型
-+ (NSData *)lubanCompressImage:(UIImage *)image imageType:(CFStringRef)imageType;
 //压缩图+水印
 + (NSData *)lubanCompressImage:(UIImage *)image withMask:(NSString *)maskName;
-//指定压缩的类型+水印
-+ (NSData *)lubanCompressImage:(UIImage *)image withMask:(NSString *)maskName imageType:(CFStringRef)imageType;
 //压缩图+水印图
 + (NSData *)lubanCompressImage:(UIImage *)image withCustomImage:(NSString *)imageName;
-//指定压缩的类型+水印图
-+ (NSData *)lubanCompressImage:(UIImage *)image withCustomImage:(NSString *)imageName imageType:(CFStringRef)imageType;
 
 @end
 
