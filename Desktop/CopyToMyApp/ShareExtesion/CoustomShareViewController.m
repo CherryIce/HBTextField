@@ -22,8 +22,6 @@
 
 @end
 
-static NSString *kQueueOperationsChanged = @"kQueueOperationsChanged";
-
 @implementation CoustomShareViewController
 
 - (void)viewDidLoad {

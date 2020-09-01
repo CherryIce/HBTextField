@@ -137,7 +137,7 @@
                 if (i == 1) {
                     NSString *urlString = [curImages objectAtIndex:i];
                     [self loadImage:imageView urlString:[curImages objectAtIndex:i]];
-//                    NSLog(@"<><><><><><><>%@",urlString);
+                    NSLog(@"<><><><><><><>%@",urlString);
                 }
                 imageView.contentMode = UIViewContentModeScaleAspectFit;
                 UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self

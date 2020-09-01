@@ -72,7 +72,6 @@ static const NSInteger maxCell = 7;
         [self.dataSource.dataSourceArray removeLastObject];
         [self.myTableView deleteSections:[NSIndexSet indexSetWithIndex:self.dataSource.dataSourceArray.count] withRowAnimation:UITableViewRowAnimationNone];
     }
-  
 }
 
 #pragma mark -- TableViewDataSourceDelegate
